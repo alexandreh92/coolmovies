@@ -1,41 +1,86 @@
-# Coolmovies web challenge
+<h1 align="center">
+    Congress Finder
+</h1>
 
-You have to add the cool movies review feature to the existing `coolmovies-frontend`.
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/alexandreh92/coolmovies">
 
-We have created a basic app for you to get started in.
 
-What tooling has been setup for you:
+  <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/22c3be622b5d42e58c97fdd70dd127fc">
 
-- [Next.js](https://nextjs.org/) (Build Framework)
-- [MUI](https://mui.com/) (Component Library)
-- [Redux Toolkit](https://redux-toolkit.js.org/) (State Management)
-- [Redux-Observable](https://redux-observable.js.org/) (State Side-effect Middleware)
-- [Apollo GraphQL](https://www.apollographql.com/) (GraphQL Query Client)
 
-You must use these tools to complete the test. If you're unfamiliar with any of these, please read their documentation. We have also added some example code for the ideal patterns we would like to see. Have a look at `pages/index.tsx`.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/alexandreh92/coolmovies">
 
-We are providing you a GraphQL API mock application to consume.
 
-## Acceptance Criteria
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alexandreh92/coolmovies">
 
-**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+  <img alt="GitHub" src="https://img.shields.io/github/license/alexandreh92/coolmovies">
+</p>
 
-There are 2 main components that must be developed for this feature: (You have flexibility on the UI/UX for this)
+<h4 align="center">
+  This project is a front-end challenge which implements movie review's listing, editing and creation by given a movie.
+</h4>
 
-1. Listing of the movie reviews.
-2. Editing the existing movie reviews.
-3. Adding additional reviews.
+<p align="center">
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">License</a>
+</p>
 
-The feature must be available on the `/reviews` endpoint of the application.
+![App Screenshot](https://res.cloudinary.com/dzsoc0i6y/image/upload/v1656373449/Screen_Shot_2022-06-27_at_20.42.43_jjxsjq.png)
 
-The design must be responsive.
+## Technologies
 
-You will be evaluated against your ability to understand and use the tooling provided and mimic existing patterns that are shown in the examples.
+This project was developed with the following technologies:
 
-There are a couple of additional things that we would like to see in your submission.
+- [NextJS](https://nextjs.org)
+- [Typescript][ts]
+- [Material-UI](https://mui.com/pt/)
+- [Redux](https://redux.js.org)
+- [Redux Observable](https://redux-observable.js.org)
+- [RsJS](https://rxjs.dev)
+- [Apollo](https://www.apollographql.com)
+- [VS Code][vscode] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
-1. Our designers don't like the default MUI blue. Please change this.
-2. Make the proxied GraphQL URL an environment variable.
-3. Improve the folder structure of the frontend application how you see fit. (It's intentionally not great)
-4. Add the custom `edit.svg` from the `public` folder as an icon to launch editing the review.
-5. Add a unit testing framework of your choice, and some unit tests around the more complex areas of your code.
+---
+
+## What can be done next?
+- Integrate SSG and SSR with Redux;
+- Better error handling with Apollo Links in the ErrorLink and adding observables to failure actions;
+- Add a testing library and specs.
+
+## Setup
+
+- Required ENV Variables:
+  ```sh
+  API_URL='http://localhost:3000/graphql'
+  ```
+
+- Running the project:
+
+  ```sh
+  cd coolmovies-backend
+  docker-compose up -d
+  cd ../coolmovies-frontend
+  yarn dev
+  ```
+
+## Lint
+
+To run linters just do:
+
+```sh
+cd coolmovies-frontend && yarn lint
+```
+## License
+
+This project is under the MIT license. See the [LICENSE](https://github.com/alexandreh92/react-code-exercise/blob/master/LICENSE) for more information.
+
+---
+
+Thanks for the opportunity, this was made with ♥&nbsp;by alexandreh92 :wave:&nbsp; [Get in touch!](https://www.linkedin.com/in/alexandreh92/)
+
+[ts]: https://www.typescriptlang.org
+[vscode]: https://code.visualstudio.com/
+[yarn]: https://yarnpkg.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
