@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { Epic, StateObservable } from "redux-observable";
 import { Observable } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
+import { toastr } from "react-redux-toastr";
 
 import { UserActions } from "../../slices/user";
 
@@ -26,6 +27,7 @@ export const getUser: Epic = (
           user: result.data.currentUser,
         });
       } catch (err) {
+        toastr.error("Woops!", "Some error had occured.");
         return UserActions.getUserFailure();
       }
     })

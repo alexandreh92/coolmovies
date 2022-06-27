@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import React, { FC, useState } from "react";
 import { Provider as ReduxProvider } from "react-redux";
+import ReduxToastr from "react-redux-toastr";
 import Head from "next/head";
 import { store } from "../store";
 import { EnhancedStore } from "@reduxjs/toolkit";
@@ -27,6 +28,16 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ReduxProvider store={store}>
         <ThemeProvider theme={theme}>
+          <ReduxToastr
+            timeOut={4000}
+            newestOnTop={false}
+            preventDuplicates
+            position="top-right"
+            transitionIn="fadeIn"
+            transitionOut="fadeOut"
+            progressBar
+            closeOnToastrClick
+          />
           <UserWrapper>
             <Component {...pageProps} />
           </UserWrapper>

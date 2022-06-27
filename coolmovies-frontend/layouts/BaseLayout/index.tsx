@@ -38,7 +38,7 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
             sx={{ flexGrow: 1 }}
             color="secondary"
           >
-            News
+            Movie Reviews
           </Typography>
           <UserContainer>
             <Typography

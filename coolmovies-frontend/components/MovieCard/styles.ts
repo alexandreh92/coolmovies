@@ -2,9 +2,22 @@ import { styled } from "@mui/material";
 
 import { Card as MUICard } from "@mui/material";
 
+export const Wrapper = styled("article")`
+  display: flex;
+  flex: 1;
+  height: 100%;
+`;
+
 export const Card = styled(MUICard)`
   display: flex;
   flex-direction: column;
+  flex: 1;
+`;
+
+export const Content = styled("div")`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const ImageContainer = styled("div")`

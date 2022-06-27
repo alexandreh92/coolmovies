@@ -42,7 +42,7 @@ const Home: NextPage = () => {
           fontWeight="bold"
           color="primary"
         >
-          Movie Reviews
+          The Latest Movie Reviews Are Here
         </Typography>
       </HeaderContainer>
       <Grid

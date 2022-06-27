@@ -2,6 +2,7 @@ import { gql } from "@apollo/client";
 import { Epic, StateObservable } from "redux-observable";
 import { Observable } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
+import { toastr } from "react-redux-toastr";
 
 import { ReviewActions } from "../../slices/reviews";
 
@@ -35,10 +36,13 @@ export const updateReview: Epic = (
 
         if (!result.data) return;
 
+        toastr.success("Success", "Review has been updated with success.");
+
         return ReviewActions.setReview({
           review: result.data.updateMovieReviewById.movieReview,
         });
       } catch (err) {
+        toastr.error("Woops!", "Some error had occured.");
         return ReviewActions.updateReviewFailure();
       }
     })
