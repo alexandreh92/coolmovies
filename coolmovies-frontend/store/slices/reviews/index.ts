@@ -27,8 +27,26 @@ export const slice = createSlice({
       );
     },
     updateReviewFailure: () => {},
+    createReview: (state, action: PayloadAction<NewReviewType>) => {},
+    setNewReview: (
+      state,
+      action: PayloadAction<{
+        review: Review;
+      }>
+    ) => {
+      state.data = [...state.data, action.payload.review];
+    },
+    createReviewFailure: () => {},
   },
 });
 
 export const { actions: ReviewActions, reducer } = slice;
 export type ReviewAction = typeof ReviewActions;
+
+export type NewReviewType = {
+  title: string;
+  body: string;
+  rating?: number | null;
+  movieId: string;
+  userReviewerId: string;
+};

@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import type { NextPage } from "next";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/AddCircle";
 
@@ -17,11 +17,16 @@ import BaseLayout from "../../layouts/BaseLayout";
 import { ReviewActions } from "../../store/slices/reviews";
 
 import { HeaderContainer, StyledIconButton } from "./styles";
+import CreateReviewModal from "../../components/CreateReviewModal";
+import { ModalHandles } from "../../components/Modal";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
+  const modalRef = useRef<ModalHandles>(null);
 
   const { data } = useSelector((state) => state.reviews);
+
+  const sortedData = [...data].sort((a, b) => (a.title > b.title ? 1 : -1));
 
   useEffect(() => {
     dispatch(ReviewActions.getReviews());
@@ -62,6 +67,7 @@ const Home: NextPage = () => {
               color="primary"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={() => modalRef.current?.open()}
             >
               <AddIcon />
             </StyledIconButton>
@@ -73,10 +79,14 @@ const Home: NextPage = () => {
               color="primary"
             >
               Add Review
+              <CreateReviewModal
+                ref={modalRef}
+                onClose={() => modalRef.current?.close()}
+              />
             </Typography>
           </Card>
         </Grid>
-        {data.map((review) => (
+        {sortedData.map((review) => (
           <Grid item xs={2} sm={4} md={4} key={review.id}>
             <MovieCard
               reviewId={review.id}

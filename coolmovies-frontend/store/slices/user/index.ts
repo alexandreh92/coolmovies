@@ -7,7 +7,7 @@ const initialState: User = {
 
 export const slice = createSlice({
   initialState,
-  name: "reviews",
+  name: "user",
   reducers: {
     getUser: () => {},
     setUser: (state, { payload: { user } }: PayloadAction<{ user: User }>) => {

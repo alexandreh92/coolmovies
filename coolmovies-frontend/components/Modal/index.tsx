@@ -33,7 +33,7 @@ const Modal = forwardRef<ModalHandles, ModalProps>(
 
     if (visible) {
       return (
-        <MUIDialog open={visible} {...props}>
+        <MUIDialog open={visible} {...props} fullWidth>
           {children}
         </MUIDialog>
       );

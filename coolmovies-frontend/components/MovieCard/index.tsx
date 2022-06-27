@@ -44,7 +44,7 @@ export default function MovieCard({
   const modalRef = useRef<ModalHandles>(null);
 
   return (
-    <Card raised>
+    <Card raised sx={{ height: "100%" }}>
       <ImageContainer>
         <Image src={imgUrl} alt={movieName} />
         <ImageOverlay />
