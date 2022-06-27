@@ -1,16 +1,9 @@
-import { css } from "@emotion/react";
 import { Container, Link, Typography } from "@mui/material";
 import type { NextPage } from "next";
-import { useDispatch } from "react-redux";
 import useUser from "../hooks/useUser";
 
-import { Link as NextLink } from "next/link";
-
 const Home: NextPage = () => {
-  const dispatch = useDispatch();
   const user = useUser();
-
-  console.log(user);
 
   return (
     <Container
@@ -36,7 +29,7 @@ const Home: NextPage = () => {
           sx={{ marginX: 2 }}
           display="flex"
           variant="h3"
-          component="h1"
+          component="span"
           fontWeight="bold"
           color="primary"
         >
@@ -52,7 +45,6 @@ const Home: NextPage = () => {
         <Link
           href="/reviews"
           color="primary"
-          component={NextLink}
           variant="h3"
           fontWeight="bold"
           underline="hover"

@@ -1,75 +1,86 @@
-- [Introduction: Coolmovies challenge](#introduction-coolmovies-challenge)
-- [Web version challenge](#web-version-challenge)
-- [Mobile version challenge](#mobile-version-challenge)
-  - [Requirements](#requirements)
-  - [Running the server](#running-the-server)
-  - [Play around with some examples](#play-around-with-some-examples)
-  - [Reinitializing the database with seed data](#reinitializing-the-database-with-seed-data)
+<h1 align="center">
+    Congress Finder
+</h1>
 
-# Introduction: Coolmovies challenge
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/alexandreh92/coolmovies">
 
-Both challenges (web and mobile) requires `coolmovies-backend` running. Check it out below.
 
-**Please do not push directly to this repo to submit your work, either submit a fork of this or create a new repo from a clone of this manually and submit that**
+  <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/22c3be622b5d42e58c97fdd70dd127fc">
 
-**Please work on this project like you would your normal job. We don't want to see mono-commits and for your commit history to be "First Commit" -> "Project Finished". "First Commit" -> "Add component" -> "Add component" -> "Editing of reviews" -> ... is preferred.**
 
-# Web version challenge
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/alexandreh92/coolmovies">
 
-Please take a look at the README inside of `coolmovies-frontend` for the details.
 
-# Mobile version challenge
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alexandreh92/coolmovies">
 
-Please take a look at the README inside of `coolmovies-mobile` for the details.
+  <img alt="GitHub" src="https://img.shields.io/github/license/alexandreh92/coolmovies">
+</p>
 
-## Requirements
+<h4 align="center">
+  This project is a front-end challenge which implements movie review's listing, editing and creation by given a movie.
+</h4>
 
-- Docker, a recent version (>= 20)
-- Docker Compose (one compatible with above docker)
-- Your local ports 5432 and 5001 are free (not running another postgres server, for instance)
+<p align="center">
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">License</a>
+</p>
 
-You need docker and docker compose installed on your machine. It supports Linux, MacOS and Windows.
+![App Screenshot](https://res.cloudinary.com/dzsoc0i6y/image/upload/v1656373449/Screen_Shot_2022-06-27_at_20.42.43_jjxsjq.png)
 
-If it's your first time, you can follow the official instructions:
-https://docs.docker.com/desktop/
-https://docs.docker.com/compose/install/
+## Technologies
 
-## Running the server
+This project was developed with the following technologies:
 
-    cd coolmovies-backend
-    docker-compose up
+- [NextJS](https://nextjs.org)
+- [Typescript][ts]
+- [Material-UI](https://mui.com/pt/)
+- [Redux](https://redux.js.org)
+- [Redux Observable](https://redux-observable.js.org)
+- [RsJS](https://rxjs.dev)
+- [Apollo](https://www.apollographql.com)
+- [VS Code][vscode] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
 
-Wait for a log message like this: `PostGraphile v4.12.3 server listening on port 5000` (just keep in mind that we are going to use port 5001)
+---
 
-Now try to connect to GraphiQL and play around with the schema: http://localhost:5001/graphiql
+## What can be done next?
+- Integrate SSG and SSR with Redux;
+- Better error handling with Apollo Links in the ErrorLink and adding observables to failure actions;
+- Add a testing library and specs.
 
-The actual endpoint to run your queries and mutations: http://localhost:5001/graphql
+## Setup
 
-## Play around with some examples
+- Required ENV Variables:
+  ```sh
+  API_URL='http://localhost:5001/graphql'
+  ```
 
-Now that your backend is working, you can play around with some queries and mutation that we already built as example. Keep in mind that running mutations here you will be actually mutating the data in your backend, but don't worry if you have an accident! In the next section we explain you how to reset your server database.
+- Running the project:
 
-We are using Insomnia to provide you some examples. If you don't know about Insomnia you can think about it as another Postman application.
+  ```sh
+  cd coolmovies-backend
+  docker-compose up -d
+  cd ../coolmovies-frontend
+  yarn dev
+  ```
 
-You can install Insomnia from here: https://insomnia.rest
+## Lint
 
-Once that you have it running, you can import Insomnia_Collection.json from the `backend` folder.
+To run linters just do:
 
-## Reinitializing the database with seed data
+```sh
+cd coolmovies-frontend && yarn lint
+```
+## License
 
-So you were playing with the mutations and deleted something you shouldn't, no problem!
+This project is under the MIT license. See the [LICENSE](https://github.com/alexandreh92/react-code-exercise/blob/master/LICENSE) for more information.
 
-Go to the `coolmovies-backend` folder using your preferred terminal, then:
+---
 
-    docker-compose down
-    docker volume rm coolmovies-backend_db
-    docker rmi coolmovies-db:latest
-    docker-compose up
+Thanks for the opportunity, this was made with ♥&nbsp;by alexandreh92 :wave:&nbsp; [Get in touch!](https://www.linkedin.com/in/alexandreh92/)
 
-If you want also to rebuild the Postgraphile Server, run this before the `up` command.
-
-    docker rmi coolmovies-graphql:**latest**
-
-Good luck and have fun!
-
-The ecoPortal Team
+[ts]: https://www.typescriptlang.org
+[vscode]: https://code.visualstudio.com/
+[yarn]: https://yarnpkg.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
