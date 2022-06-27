@@ -2,7 +2,6 @@ declare global {
   export interface User {
     id: string;
     name: string;
-    nodeId: string;
   }
 
   export interface Review {

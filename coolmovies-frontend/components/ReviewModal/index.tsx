@@ -30,6 +30,11 @@ const ReviewModal = forwardRef<ModalHandles, ReviewModalProps>(
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
 
+    const handleOnClose = useCallback(() => {
+      setEditMode(false);
+      onClose();
+    }, [onClose]);
+
     const handleOnEdit = useCallback(() => {
       setEditMode(true);
     }, []);
@@ -42,18 +47,22 @@ const ReviewModal = forwardRef<ModalHandles, ReviewModalProps>(
           movieId: review?.movieByMovieId.id,
         })
       );
-      onClose();
+      handleOnClose();
     };
 
     return (
       <Modal ref={ref}>
         {editMode ? (
-          <Form reviewId={reviewId} onSave={handleOnSave} onCancel={onClose} />
+          <Form
+            reviewId={reviewId}
+            onSave={handleOnSave}
+            onCancel={handleOnClose}
+          />
         ) : (
           <Placeholder
             reviewId={reviewId}
             onEdit={handleOnEdit}
-            onCancel={onClose}
+            onCancel={handleOnClose}
           />
         )}
       </Modal>

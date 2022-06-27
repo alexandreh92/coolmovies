@@ -13,6 +13,7 @@ import {
 import ApolloProvider, { client } from "../services/apollo";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "../styles";
+import UserWrapper from "../components/UserWrapper";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   if (!store) return <>{"Loading..."}</>;
@@ -26,7 +27,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ReduxProvider store={store}>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <UserWrapper>
+            <Component {...pageProps} />
+          </UserWrapper>
         </ThemeProvider>
       </ReduxProvider>
     </ApolloProvider>

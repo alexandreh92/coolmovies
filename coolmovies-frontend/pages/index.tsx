@@ -12,24 +12,20 @@ import {
 import type { NextPage } from "next";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCard from "../components/MovieCard";
-import { MovieActions } from "../store/slices/reviews";
+import useUser from "../hooks/useUser";
+import { UserActions } from "../store/slices/user";
 
 const primary = "#1976d2";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
+  const user = useUser();
 
-  const { data } = useSelector((state) => state.movie);
+  console.log(user);
 
-  const newData = [...data, ...data, ...data, ...data, ...data];
-
-  // const foo = useSelector((state) => state)
-  // const exampleState = useAppSelector((state) => state.example);
   return (
     <Container maxWidth="sm">
-      {newData.map((movie) => (
-        <MovieCard imgUrl={movie.imgUrl} />
-      ))}
+      <button onClick={() => dispatch(UserActions.getUser())}></button>
     </Container>
   );
 };
