@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import React, { FC, useState } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import Head from "next/head";
-import { createStore } from "../redux";
+import { store } from "../store";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import {
   ApolloClient,
@@ -13,11 +13,6 @@ import {
 import ApolloProvider, { client } from "../services/apollo";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const [store, setStore] = useState<EnhancedStore | null>(null);
-  React.useEffect(() => {
-    const store = createStore({ epicDependencies: { client } });
-    setStore(store);
-  }, []);
   if (!store) return <>{"Loading..."}</>;
   return (
     <ApolloProvider>

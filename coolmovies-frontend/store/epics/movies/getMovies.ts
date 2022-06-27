@@ -1,9 +1,15 @@
 import { gql } from "@apollo/client";
 import { Epic, StateObservable } from "redux-observable";
 import { Observable } from "rxjs";
-import { filter, map, switchMap } from "rxjs/operators";
+import { filter, switchMap } from "rxjs/operators";
 
 import { MovieActions } from "../../slices/movies";
+
+type AllMoviesQueryReturnType = {
+  allMovies: {
+    nodes: Movie[];
+  };
+};
 
 export const getMovies: Epic = (
   action$: Observable<MovieAction["getMovies"]>,
@@ -14,10 +20,10 @@ export const getMovies: Epic = (
     filter(MovieActions.getMovies.match),
     switchMap(async () => {
       try {
-        const result = await client.query({
+        const result = await client.query<AllMoviesQueryReturnType>({
           query: allMoviesQuery,
         });
-        return MovieActions.setMovies({ data: result.data });
+        return MovieActions.setMovies({ movies: result.data.allMovies.nodes });
       } catch (err) {
         return MovieActions.getMoviesFailure();
       }

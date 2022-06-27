@@ -8,13 +8,15 @@ import {
   Zoom,
 } from "@mui/material";
 import type { NextPage } from "next";
-import { useSelector } from "react-redux";
-import { exampleActions, useAppDispatch, useAppSelector } from "../redux";
+import { useDispatch, useSelector } from "react-redux";
+import { MovieActions } from "../store/slices/movies";
 
 const primary = "#1976d2";
 
 const Home: NextPage = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
+
+  const { data } = useSelector((state) => state.movie);
 
   // const foo = useSelector((state) => state)
   // const exampleState = useAppSelector((state) => state.example);
@@ -23,6 +25,8 @@ const Home: NextPage = () => {
       <Paper elevation={3} css={styles.navBar}>
         <Typography>{"EcoPortal"}</Typography>
       </Paper>
+
+      {JSON.stringify(data)}
 
       <div css={styles.body}>
         <Typography variant={"h1"} css={styles.heading}>
@@ -42,22 +46,16 @@ const Home: NextPage = () => {
           >
             <Button
               variant={"contained"}
-              onClick={() => dispatch(exampleActions.increment())}
+              // onClick={() => dispatch(exampleActions.increment())}
             >
               {/* {`Redux Increment: ${exampleState.value}`} */}
             </Button>
           </Tooltip>
           <Button
             variant={"outlined"}
-            // onClick={() =>
-            //   dispatch(
-            //     exampleState.fetchData
-            //       ? exampleActions.clearData()
-            //       : exampleActions.fetch()
-            //   )
-            // }
+            onClick={() => dispatch(MovieActions.getMovies())}
           >
-            {/* {exampleState.fetchData ? "Hide some data" : "Fetch some data"} */}
+            Fetch
           </Button>
         </div>
 
