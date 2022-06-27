@@ -1,6 +1,12 @@
+import { ReviewAction as _ReviewAction } from "../store/slices/reviews";
+import {
+  AppDispatch as _AppDispatch,
+  RootState as _RootState,
+} from "../store/createStore";
+
 declare global {
-  export { MovieAction } from "../store/slices/movies";
-  export { AppDispatch, RootState } from "../store/createStore";
+  export { _ReviewAction as ReviewAction };
+  export { _AppDispatch as AppDispatch, _RootState as RootState };
 }
 
 export {};

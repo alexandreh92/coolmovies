@@ -12,7 +12,7 @@ import {
 import type { NextPage } from "next";
 import { useDispatch, useSelector } from "react-redux";
 import MovieCard from "../components/MovieCard";
-import { MovieActions } from "../store/slices/movies";
+import { MovieActions } from "../store/slices/reviews";
 
 const primary = "#1976d2";
 

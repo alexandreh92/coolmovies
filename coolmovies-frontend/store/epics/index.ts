@@ -1,5 +1,5 @@
 import { combineEpics } from "redux-observable";
 
-import { movieEpics } from "./movies";
+import { reviewEpics } from "./reviews";
 
-export const rootEpic = combineEpics(movieEpics);
+export const rootEpic = combineEpics(reviewEpics);

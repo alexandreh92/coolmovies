@@ -1,5 +1,5 @@
-import { reducer as MovieReducer } from "./movies";
+import { reducer as ReviewReducer } from "./reviews";
 
 export const reducers = {
-  movie: MovieReducer,
+  reviews: ReviewReducer,
 };

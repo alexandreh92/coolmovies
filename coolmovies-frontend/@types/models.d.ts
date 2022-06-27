@@ -5,15 +5,19 @@ declare global {
     nodeId: string;
   }
 
+  export interface Review {
+    id: string;
+    title: string;
+    body: string;
+    rating: number;
+    movieByMovieId: Movie;
+    userByUserReviewerId: User;
+  }
+
   export interface Movie {
     id: string;
     imgUrl: string;
-    movieDirectorId: string;
-    userCreatorId: string;
     title: string;
-    releaseDate: string;
-    nodeId: string;
-    userByUserCreatorId: User;
   }
 }
 

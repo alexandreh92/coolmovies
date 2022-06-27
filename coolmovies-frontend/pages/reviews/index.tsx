@@ -5,19 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import MovieCard from "../../components/MovieCard";
 
-import { MovieActions } from "../../store/slices/movies";
+import { ReviewActions } from "../../store/slices/reviews";
 
 import { HeaderContainer } from "./styles";
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
 
-  const { data } = useSelector((state) => state.movie);
-
-  const newData = [...data, ...data, ...data, ...data, ...data];
+  const { data } = useSelector((state) => state.reviews);
 
   useEffect(() => {
-    dispatch(MovieActions.getMovies());
+    dispatch(ReviewActions.getReviews());
   }, [dispatch]);
 
   return (
@@ -38,9 +36,17 @@ const Home: NextPage = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 1, sm: 8, md: 12 }}
       >
-        {newData.map((movie) => (
-          <Grid item xs={2} sm={4} md={4} key={movie.id}>
-            <MovieCard imgUrl={movie.imgUrl} />
+        {data.map((review) => (
+          <Grid item xs={2} sm={4} md={4} key={review.id}>
+            <MovieCard
+              reviewId={review.id}
+              name={review.userByUserReviewerId.name}
+              title={review.title}
+              description={review.body}
+              imgUrl={review.movieByMovieId.imgUrl}
+              rating={review.rating}
+              movieName={review.movieByMovieId.title}
+            />
           </Grid>
         ))}
       </Grid>

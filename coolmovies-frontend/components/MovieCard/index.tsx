@@ -2,20 +2,69 @@ import {
   Avatar,
   Button,
   CardContent,
-  CardMedia,
   Divider,
   Rating,
   Typography,
 } from "@mui/material";
-import { Card, ImageContainer, Info, UserInfo } from "./styles";
+import { useRef } from "react";
 
-export default function MovieCard({ imgUrl }) {
+import { ModalHandles } from "../Modal";
+import ReviewModal from "../ReviewModal";
+
+import {
+  Card,
+  ImageContainer,
+  Image,
+  ImageOverlay,
+  Info,
+  UserInfo,
+  MovieName,
+  DescriptionContainer,
+} from "./styles";
+
+interface MovieCardProps {
+  reviewId: string;
+  name: string;
+  title: string;
+  description: string;
+  rating: number;
+  movieName: string;
+  imgUrl: string;
+}
+
+export default function MovieCard({
+  reviewId,
+  name,
+  title,
+  description,
+  rating,
+  movieName,
+  imgUrl,
+}: MovieCardProps) {
+  const modalRef = useRef<ModalHandles>(null);
+
   return (
     <Card>
-      <ImageContainer src={imgUrl} />
+      <ImageContainer>
+        <Image src={imgUrl} alt={movieName} />
+        <ImageOverlay />
+        <MovieName>
+          <Typography
+            variant="body1"
+            component="h3"
+            color="grey.50"
+            marginTop={2}
+            fontWeight="bold"
+          >
+            {movieName}
+          </Typography>
+        </MovieName>
+      </ImageContainer>
       <CardContent>
         <UserInfo>
-          <Avatar src="https://avatars.dicebear.com/api/initials/alexandre.svg" />
+          <Avatar
+            src={`https://avatars.dicebear.com/api/initials/${name}.svg`}
+          />
           <Info>
             <Typography
               variant="body2"
@@ -23,9 +72,9 @@ export default function MovieCard({ imgUrl }) {
               fontWeight="500"
               marginBottom={0.5}
             >
-              h1. Heading
+              {name}
             </Typography>
-            <Rating name="read-only" value={5} readOnly size="small" />
+            <Rating name="read-only" value={rating} readOnly size="small" />
           </Info>
         </UserInfo>
         <Typography
@@ -34,21 +83,29 @@ export default function MovieCard({ imgUrl }) {
           marginTop={2}
           fontWeight="bold"
         >
-          h1. Heading
+          {title}
         </Typography>
-        <Typography
-          variant="body2"
-          component="h3"
-          marginTop={1}
-          fontWeight="lighter"
-          color="grey.500"
-        >
-          h1. Heading
-        </Typography>
+        <DescriptionContainer>
+          <Typography
+            variant="body2"
+            component="h3"
+            marginTop={1}
+            fontWeight="lighter"
+            color="grey.500"
+          >
+            {description}
+          </Typography>
+        </DescriptionContainer>
       </CardContent>
       <Divider />
-
-      <Button variant="text">Show Review</Button>
+      <Button variant="text" onClick={() => modalRef.current?.open()}>
+        Show Review
+      </Button>
+      <ReviewModal
+        reviewId={reviewId}
+        ref={modalRef}
+        onClose={() => modalRef.current?.close()}
+      />
     </Card>
   );
 }
