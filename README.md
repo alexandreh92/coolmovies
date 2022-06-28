@@ -1,5 +1,5 @@
 <h1 align="center">
-    Congress Finder
+    Cool Movies
 </h1>
 
 <p align="center">
